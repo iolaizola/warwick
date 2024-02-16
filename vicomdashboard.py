@@ -130,7 +130,7 @@ if uploaded_file is not None:
 
 
 
-    # filter version 2  of experiments
+    # Using Tags
     sns.set_theme()
     sns.set(font_scale=3)
     binsize = 25
@@ -148,6 +148,39 @@ if uploaded_file is not None:
     sns.lineplot(data=dft, x="Age Group", y="score", errorbar=('pi',50))
     #sns.scatterplot(data=dft, x='Age', y='Perception Performance', hue='Gender',legend=True, palette=["#AB00AB", "blue"],s=300) #.set(title="Age vs. Correct Answers")
     sns.scatterplot(data=dft, x='Age', y='score', hue='Type', palette=typalette,legend=True, s=300) #.set(title="Age vs. Correct Answers")
+    plt.ylim(-1, 10.5)
+    # Add lines for repeating tests
+    repeated_test_IDs = filtered_df = dft.loc[dft['ID'] > 1000,'ID'].values
+    for i in repeated_test_IDs:
+        plt.plot([ dft.loc[dft['ID'] == i,'Age'].values[0],dft.loc[dft['ID'] == i/1000,'Age'].values[0] ], 
+             [ dft.loc[dft['ID'] == i,'score'].values[0],dft.loc[dft['ID'] == i/1000,'score'].values[0] ])
+    dft['Tag'] = dft['Tag'].fillna('')
+    for index, row in dft.iterrows():
+        plt.text(row['Age'], row['score'], str(row['Tag']), fontsize=18, ha='right', va='center')
+
+
+    plt.legend(loc='upper right', fontsize='x-small', bbox_to_anchor=(1, 1.2))
+    st.pyplot(plt)
+
+
+
+    # By gender
+    sns.set_theme()
+    sns.set(font_scale=3)
+    binsize = 25
+    typalette =  {
+        'Female': 'green',
+        'Male': 'blue'
+    }
+    dft = D[D['version']==2].copy()
+    dft['Age Group'] = np.floor(dft['Age'] / binsize) * binsize + binsize/2
+    dft.loc[dft['Age Group']==dft['Age Group'].min(),'Age Group'] = dft['Age'].min()
+    dft.loc[dft['Age Group']==dft['Age Group'].max(),'Age Group'] = dft['Age'].max()
+    dft.loc[dft['score']==0,'Condition'] = "Others"
+    plt.figure(figsize=(24,10))
+    sns.lineplot(data=dft, x="Age Group", y="score", errorbar=('pi',50))
+    #sns.scatterplot(data=dft, x='Age', y='Perception Performance', hue='Gender',legend=True, palette=["#AB00AB", "blue"],s=300) #.set(title="Age vs. Correct Answers")
+    sns.scatterplot(data=dft, x='Age', y='score', hue='Gender', palette=typalette,legend=True, s=300) #.set(title="Age vs. Correct Answers")
     plt.ylim(-1, 10.5)
     # Add lines for repeating tests
     repeated_test_IDs = filtered_df = dft.loc[dft['ID'] > 1000,'ID'].values
