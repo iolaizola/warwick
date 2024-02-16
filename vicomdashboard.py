@@ -10,12 +10,12 @@ import streamlit as st
 #import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-import matplotlib.pyplot as plt
+import   as plt
 #import os
 from PIL import Image # just to open the favicon (OMG)
 #from utils import *  # our own library for the VicomPlanner
-import base64
-from plotly.offline import iplot
+#import base64
+#from plotly.offline import iplot
 #import extra_streamlit_components as stx
 
 favicon = Image.open("data/vicomtech.ico")
