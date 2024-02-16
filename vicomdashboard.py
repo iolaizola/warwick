@@ -99,6 +99,8 @@ if uploaded_file is not None:
     D["score"] = D.apply(lambda x: calculate_new_score(x),axis=1)  # Extract the numeric value using regex
 
     # First scatter plot
+    st.markdown("---")
+    st.title("Groups by Condition")
     sns.set_theme()
     sns.set(font_scale=3)
     binsize = 25
@@ -137,6 +139,8 @@ if uploaded_file is not None:
 
 
     # Using Tags
+    st.markdown("---")
+    st.title("Groups by Tag")
     sns.set_theme()
     sns.set(font_scale=3)
     binsize = 25
@@ -171,6 +175,8 @@ if uploaded_file is not None:
 
 
     # By gender
+    st.markdown("---")
+    st.title("Groups by Gender")
     sns.set_theme()
     sns.set(font_scale=3)
     binsize = 25
