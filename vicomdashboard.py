@@ -57,6 +57,12 @@ k2 = 1.2
 k1 = 1.0
 #####################
 #####################
+st.markdown("""
+## Warwick/Vicomtech data visualizer
+
+Open the sidebar with the upper left arrow and select or drop the Excel file
+""")
+
 
 uploaded_file = st.sidebar.file_uploader("Upload Excel file", type=["xlsx", "xls"])
 if uploaded_file is not None:
