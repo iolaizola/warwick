@@ -10,7 +10,7 @@ import streamlit as st
 #import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-import   as plt
+import matplotlib.pyplot as plt
 #import os
 from PIL import Image # just to open the favicon (OMG)
 #from utils import *  # our own library for the VicomPlanner
