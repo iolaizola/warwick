@@ -157,7 +157,7 @@ if uploaded_file is not None:
     plt.figure(figsize=(24,10))
     sns.lineplot(data=dft, x="Age Group", y="score", errorbar=('pi',50))
     #sns.scatterplot(data=dft, x='Age', y='Perception Performance', hue='Gender',legend=True, palette=["#AB00AB", "blue"],s=300) #.set(title="Age vs. Correct Answers")
-    sns.scatterplot(data=dft, x='Age', y='score', hue='Type', palette=typalette,legend=True, s=300) #.set(title="Age vs. Correct Answers")
+    sns.scatterplot(data=dft, x='Age', y='score', hue='Type', legend=True, s=300) #.set(title="Age vs. Correct Answers")
     plt.ylim(-1, 10.5)
     # Add lines for repeating tests
     repeated_test_IDs = filtered_df = dft.loc[dft['ID'] > 1000,'ID'].values
